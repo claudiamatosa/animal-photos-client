@@ -1,7 +1,7 @@
 import React from "react";
 import UploadForm from "../components/UploadForm";
 
-export default ({}) => (
+export default () => (
   <div>
     <h3>Upload</h3>
 
