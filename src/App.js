@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import List from "./pages/List";
 import Upload from "./pages/Upload";
@@ -73,6 +74,8 @@ const App = () => (
         <Route path="/upload" component={Upload} />
         <Route path="/view/:id" component={View} />
       </Main>
+
+      <ToastContainer autoClose={30000} />
     </Fragment>
   </Router>
 );
