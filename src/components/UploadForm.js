@@ -4,11 +4,21 @@ import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
 import PhotoCard from "./PhotoCard";
+import { PrimaryButton } from "./ui/Buttons";
+import { H3 } from "./ui/Titles";
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const UploadMore = styled.div`
+  margin-top: 40px;
+`;
+
+const FileUpload = styled.input.attrs({ type: "file" })`
+  margin: 30px 0 50px;
 `;
 
 const ADD_PHOTO = gql`
@@ -28,8 +38,12 @@ export default () => (
       <Fragment>
         {data && data.addPhoto ? (
           <Fragment>
-            <h3>Here's your photo!</h3>
+            <H3>Here's your photo!</H3>
             <PhotoCard {...data.addPhoto} />
+
+            <UploadMore>
+              <H3>Upload another:</H3>
+            </UploadMore>
           </Fragment>
         ) : null}
 
@@ -48,11 +62,11 @@ export default () => (
             You can only upload photos with animals! Don't try being sneaky.
           </p>
 
-          <input type="file" name="photo" disabled={loading} />
+          <FileUpload name="photo" disabled={loading} />
 
-          <button type="submit" disabled={loading}>
+          <PrimaryButton type="submit" disabled={loading}>
             {loading ? "Uploading..." : "Upload!"}
-          </button>
+          </PrimaryButton>
         </Form>
       </Fragment>
     )}

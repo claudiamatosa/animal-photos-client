@@ -1,9 +1,10 @@
 import React from "react";
 import UploadForm from "../components/UploadForm";
+import { H2 } from "../components/ui/Titles";
 
 export default () => (
   <div>
-    <h2>Upload</h2>
+    <H2>Upload</H2>
 
     <UploadForm />
   </div>

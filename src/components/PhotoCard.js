@@ -2,12 +2,18 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import ImageMeta from "./ImageMeta";
+
+import colors from "../styles/colors";
+
 const heightProportion = "55%";
 
 const PhotoCard = styled.div`
   padding: 0;
-  box-shadow: 2px 2px 2px gray;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px silver;
   max-width: 100%;
+  overflow: hidden;
 `;
 
 const ImageContainer = styled.div`
@@ -28,23 +34,31 @@ const Image = styled.img`
   margin-bottom: -${heightProportion};
 `;
 
-const Description = styled.p`
-  padding: 10px;
+const ViewMoreLink = styled(Link)`
+  display: inline-block;
+  margin: 10px;
+  font-size: 12px;
+  text-decoration: none;
+  color: ${colors.tertiary};
+
+  &::after {
+    display: inline;
+    content: " >";
+  }
 `;
+
+const viewMoreUrl = id => `/view/${id}`;
 
 export default ({ id, src, description, tags, showDetails = true }) => (
   <PhotoCard>
-    <ImageContainer>
-      <Image src={src} alt={description} />
-    </ImageContainer>
+    <Link to={viewMoreUrl(id)}>
+      <ImageContainer>
+        <Image src={src} alt={description} />
+      </ImageContainer>
+    </Link>
 
-    {showDetails && (
-      <Fragment>
-        <Description>{description}</Description>
-        <Description>Tags: {tags.join(", ")}</Description>
-      </Fragment>
-    )}
+    {showDetails && <ImageMeta description={description} tags={tags} />}
 
-    <Link to={`/view/${id}`}>View ></Link>
+    <ViewMoreLink to={viewMoreUrl(id)}>View</ViewMoreLink>
   </PhotoCard>
 );

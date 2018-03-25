@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
 import Photos from "../components/Photos";
+import { H2 } from "../components/ui/Titles";
 
 const GET_PHOTOS = gql`
   query photos {
@@ -23,7 +24,7 @@ export default () => (
 
       return (
         <Fragment>
-          <h2>Hereʼs some pics</h2>
+          <H2>How cute!</H2>
           <Photos photos={data.photos} />
         </Fragment>
       );
