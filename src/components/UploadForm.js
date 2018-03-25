@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -11,7 +12,7 @@ const Form = styled.form`
   align-items: center;
 `;
 
-const addPhoto = gql`
+const ADD_PHOTO = gql`
   mutation addPhoto($data: PhotoUpload!) {
     addPhoto(data: $data) {
       id
@@ -23,7 +24,7 @@ const addPhoto = gql`
 `;
 
 export default () => (
-  <Mutation mutation={addPhoto}>
+  <Mutation mutation={ADD_PHOTO}>
     {(addPhoto, { data }) => (
       <Fragment>
         {data && data.addPhoto ? (
@@ -34,6 +35,8 @@ export default () => (
               description={data.addPhoto.description}
               tags={data.addPhoto.tags}
             />
+
+            <Link to={`/view/${data.addPhoto.id}`}>View ></Link>
           </Fragment>
         ) : null}
 
