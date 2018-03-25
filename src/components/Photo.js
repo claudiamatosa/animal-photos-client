@@ -15,9 +15,10 @@ const Description = styled.p`
   padding: 10px;
 `;
 
-export default ({ src, description }) => (
+export default ({ src, description, tags }) => (
   <ImageCard>
     <Image src={src} alt={description} />
     <Description>{description}</Description>
+    <Description>Tags: {tags.join(", ")}</Description>
   </ImageCard>
 );

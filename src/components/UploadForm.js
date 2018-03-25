@@ -16,6 +16,8 @@ const addPhoto = gql`
     addPhoto(data: $data) {
       id
       src
+      description
+      tags
     }
   }
 `;
@@ -27,7 +29,11 @@ export default () => (
         {data && data.addPhoto ? (
           <Fragment>
             <h3>Here's your photo!</h3>
-            <Photo src={data.addPhoto.src} description="todo" />
+            <Photo
+              src={data.addPhoto.src}
+              description={data.addPhoto.description}
+              tags={data.addPhoto.tags}
+            />
           </Fragment>
         ) : null}
 
