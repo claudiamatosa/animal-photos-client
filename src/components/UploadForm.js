@@ -59,7 +59,7 @@ export default () => (
           }}
         >
           <p>
-            You can only upload photos with animals! Don't try being sneaky.
+            You can only upload photos with animals! Donʼt try being sneaky.
           </p>
 
           <FileUpload name="photo" disabled={loading} />
