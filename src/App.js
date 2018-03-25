@@ -72,11 +72,11 @@ const App = () => (
       </Navigation>
 
       <Main>
-        <ErrorBoundary>
-          <Route exact path="/" component={List} />
-          <Route path="/upload" component={Upload} />
-          <Route path="/view/:id" component={View} />
-        </ErrorBoundary>
+        {/* <ErrorBoundary> */}
+        <Route exact path="/" component={List} />
+        <Route path="/upload" component={Upload} />
+        <Route path="/view/:id" component={View} />
+        {/* </ErrorBoundary> */}
       </Main>
 
       <ToastContainer autoClose={30000} style={{ width: "400px" }} />
