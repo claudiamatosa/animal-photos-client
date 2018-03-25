@@ -7,6 +7,8 @@ import List from "./pages/List";
 import Upload from "./pages/Upload";
 import View from "./pages/View";
 
+import ErrorBoundary from "./components/ErrorBoundary";
+
 import colors from "./styles/colors";
 
 const Main = styled.main`
@@ -70,9 +72,11 @@ const App = () => (
       </Navigation>
 
       <Main>
-        <Route exact path="/" component={List} />
-        <Route path="/upload" component={Upload} />
-        <Route path="/view/:id" component={View} />
+        <ErrorBoundary>
+          <Route exact path="/" component={List} />
+          <Route path="/upload" component={Upload} />
+          <Route path="/view/:id" component={View} />
+        </ErrorBoundary>
       </Main>
 
       <ToastContainer autoClose={30000} style={{ width: "400px" }} />

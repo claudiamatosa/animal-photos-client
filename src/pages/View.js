@@ -18,7 +18,7 @@ const GET_PHOTO = gql`
 export default ({ match: { params: { id } } }) => (
   <Query query={GET_PHOTO} variables={{ id }} fetchPolicy="cache-and-network">
     {({ loading, error, data }) => {
-      if (error) return null;
+      if (error) throw error;
       if (loading) return "Loading...";
 
       const { photo } = data;
