@@ -7,7 +7,7 @@ const Photo = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 100%;
+  width: 100%;
 `;
 
 const Description = styled.p`

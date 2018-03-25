@@ -3,7 +3,7 @@ import UploadForm from "../components/UploadForm";
 
 export default () => (
   <div>
-    <h3>Upload</h3>
+    <h2>Upload</h2>
 
     <UploadForm />
   </div>

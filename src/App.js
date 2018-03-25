@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -7,6 +7,9 @@ import Upload from "./pages/Upload";
 import View from "./pages/View";
 
 const Main = styled.main`
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px 40px;
   text-align: center;
 `;
 
@@ -17,6 +20,7 @@ const Header = styled.header`
   color: white;
   font-size: 35px;
   letter-spacing: 15px;
+  text-align: center;
 `;
 
 const Navigation = styled.nav`
@@ -35,7 +39,7 @@ const Navigation = styled.nav`
 
 const App = () => (
   <Router>
-    <Main>
+    <Fragment>
       <Header>🐭🐶🐱🐌🙊🐣</Header>
 
       <Navigation>
@@ -49,10 +53,12 @@ const App = () => (
         </ul>
       </Navigation>
 
-      <Route exact path="/" component={List} />
-      <Route path="/upload" component={Upload} />
-      <Route path="/view/:id" component={View} />
-    </Main>
+      <Main>
+        <Route exact path="/" component={List} />
+        <Route path="/upload" component={Upload} />
+        <Route path="/view/:id" component={View} />
+      </Main>
+    </Fragment>
   </Router>
 );
 
