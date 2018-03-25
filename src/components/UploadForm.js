@@ -9,6 +9,7 @@ import { PrimaryButton } from "./ui/Buttons";
 import { H3 } from "./ui/Titles";
 
 import { newLinesToBreaks } from "../utils/strings";
+import { extractGraphQLError } from "../utils/errors";
 
 const Form = styled.form`
   display: flex;
@@ -35,24 +36,39 @@ const ADD_PHOTO = gql`
   }
 `;
 
-const UploadError = ({ error: { graphQLErrors: [errorDetails] } }) => (
-  <Fragment>
-    <p>
-      We couldnʼt find an animal in this photo, so itʼs a no-go. Stop trying to
-      trick the system!
-    </p>
+const errors = {
+  ANIMAL_NOT_FOUND: ({ error: { graphQLErrors: [errorDetails] } }) => (
+    <Fragment>
+      <p>
+        We couldnʼt find an animal in this photo, so itʼs a no-go. Stop trying
+        to trick the system!
+      </p>
 
-    <small>
+      <small>
+        <p>
+          <strong>Found tags:</strong> {errorDetails.data.tags.join(", ")}
+        </p>
+        <p>
+          <strong>Found categories:</strong>{" "}
+          {errorDetails.data.categories.join(", ")}
+        </p>
+      </small>
+    </Fragment>
+  ),
+  ANALYSIS_ERROR: ({ error }) => (
+    <Fragment>
       <p>
-        <strong>Found tags:</strong> {errorDetails.data.tags.join(", ")}
+        We were unable to analyse your photo due to the following. Please check
+        and re-submit.
       </p>
-      <p>
-        <strong>Found categories:</strong>{" "}
-        {errorDetails.data.categories.join(", ")}
-      </p>
-    </small>
-  </Fragment>
-);
+
+      <small>
+        <p>{error.message}</p>
+      </small>
+    </Fragment>
+  ),
+  DEFAULT: ({ error }) => newLinesToBreaks(error.message)
+};
 
 const onSubmit = addPhoto => event => {
   event.preventDefault();
@@ -82,8 +98,12 @@ export default () => {
     <Mutation mutation={ADD_PHOTO}>
       {(addPhoto, { data, loading, error }) => {
         if (error && !toast.isActive(notificationId)) {
-          // notificationId = toast.error(newLinesToBreaks(errorDetails.message));
-          notificationId = toast.error(<UploadError error={error} />);
+          // notificationId = toast.error(newLinesToBreaks(error.message));
+
+          const errorDetails = extractGraphQLError(error);
+          const errorCode = errorDetails.data && errorDetails.data.code;
+          const ErrorComponent = errors[errorCode] || errors.DEFAULT;
+          notificationId = toast.error(<ErrorComponent error={error} />);
         }
 
         return (
