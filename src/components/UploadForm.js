@@ -98,12 +98,12 @@ export default () => {
     <Mutation mutation={ADD_PHOTO}>
       {(addPhoto, { data, loading, error }) => {
         if (error && !toast.isActive(notificationId)) {
-          // notificationId = toast.error(newLinesToBreaks(error.message));
+          notificationId = toast.error(newLinesToBreaks(error.message));
 
-          const errorDetails = extractGraphQLError(error);
-          const errorCode = errorDetails.data && errorDetails.data.code;
-          const ErrorComponent = errors[errorCode] || errors.DEFAULT;
-          notificationId = toast.error(<ErrorComponent error={error} />);
+          // const errorDetails = extractGraphQLError(error);
+          // const errorCode = errorDetails.data && errorDetails.data.code;
+          // const ErrorComponent = errors[errorCode] || errors.DEFAULT;
+          // notificationId = toast.error(<ErrorComponent error={error} />);
         }
 
         return (
