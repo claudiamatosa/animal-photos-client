@@ -75,7 +75,7 @@ const App = () => (
         <Route path="/view/:id" component={View} />
       </Main>
 
-      <ToastContainer autoClose={30000} />
+      <ToastContainer autoClose={30000} style={{ width: "400px" }} />
     </Fragment>
   </Router>
 );

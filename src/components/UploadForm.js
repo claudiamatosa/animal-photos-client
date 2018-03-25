@@ -8,6 +8,8 @@ import PhotoCard from "./PhotoCard";
 import { PrimaryButton } from "./ui/Buttons";
 import { H3 } from "./ui/Titles";
 
+import { newLinesToBreaks } from "../utils/strings";
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -61,7 +63,7 @@ export default () => {
     <Mutation mutation={ADD_PHOTO}>
       {(addPhoto, { data, loading, error }) => {
         if (error && !toast.isActive(notificationId)) {
-          notificationId = toast.error(error.message);
+          notificationId = toast.error(newLinesToBreaks(error.message));
         }
 
         return (
