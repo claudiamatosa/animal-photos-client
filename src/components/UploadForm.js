@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
-import UploadForm from "../components/UploadForm";
+import Photo from "./Photo";
 
 const Form = styled.form`
   display: flex;
@@ -23,21 +23,32 @@ const addPhoto = gql`
 export default () => (
   <Mutation mutation={addPhoto}>
     {(addPhoto, { data }) => (
-      <Form
-        onSubmit={e => {
-          e.preventDefault();
-          const photo = e.target.photo.files[0];
+      <Fragment>
+        {data && data.addPhoto ? (
+          <Fragment>
+            <h3>Here's your photo!</h3>
+            <Photo src={data.addPhoto.src} description="todo" />
+          </Fragment>
+        ) : null}
 
-          if (!photo) return;
+        <Form
+          onSubmit={e => {
+            e.preventDefault();
+            const photo = e.target.photo.files[0];
 
-          addPhoto({ variables: { data: { photo } } });
-        }}
-      >
-        <p>You can only upload photos with animals in them!</p>
+            if (!photo) return;
 
-        <input type="file" name="photo" />
-        <button type="submit">Upload!</button>
-      </Form>
+            addPhoto({ variables: { data: { photo } } });
+          }}
+        >
+          <p>
+            You can only upload photos with animals! Don't try being sneaky.
+          </p>
+
+          <input type="file" name="photo" />
+          <button type="submit">Upload!</button>
+        </Form>
+      </Fragment>
     )}
   </Mutation>
 );
