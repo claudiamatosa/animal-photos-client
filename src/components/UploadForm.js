@@ -45,7 +45,7 @@ const onSubmit = addPhoto => event => {
 
 const UploadedPhoto = ({ photo }) => (
   <Fragment>
-    <H3>Here's your photo!</H3>
+    <H3>Hereʼs your photo!</H3>
     <PhotoCard {...photo} />
 
     <UploadMore>
@@ -72,7 +72,7 @@ export default () => {
 
             <Form onSubmit={onSubmit(addPhoto)}>
               <p>
-                You can only upload photos with animals! Don't try being sneaky.
+                You can only upload photos with animals! Donʼt try being sneaky.
               </p>
 
               <FileUpload name="photo" disabled={loading} />
