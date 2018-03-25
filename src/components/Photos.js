@@ -24,7 +24,7 @@ export default ({ photos }) =>
   photos && (
     <Photos>
       {photos.map(photo => (
-        <Photo>
+        <Photo key={photo.id}>
           <PhotoCard {...photo} showDetails={false} />
         </Photo>
       ))}

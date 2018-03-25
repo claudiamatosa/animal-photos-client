@@ -17,7 +17,7 @@ const GET_PHOTOS = gql`
 `;
 
 export default () => (
-  <Query query={GET_PHOTOS}>
+  <Query query={GET_PHOTOS} pollInterval={5000}>
     {({ loading, error, data }) => {
       if (error) return null;
       if (loading) return "Loading...";
