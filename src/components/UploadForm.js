@@ -1,10 +1,9 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
-import Photo from "./Photo";
+import PhotoCard from "./PhotoCard";
 
 const Form = styled.form`
   display: flex;
@@ -30,13 +29,7 @@ export default () => (
         {data && data.addPhoto ? (
           <Fragment>
             <h3>Here's your photo!</h3>
-            <Photo
-              src={data.addPhoto.src}
-              description={data.addPhoto.description}
-              tags={data.addPhoto.tags}
-            />
-
-            <Link to={`/view/${data.addPhoto.id}`}>View ></Link>
+            <PhotoCard {...data.addPhoto} />
           </Fragment>
         ) : null}
 

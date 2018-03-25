@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const Photo = styled.div`
+const PhotoCard = styled.div`
   padding: 0;
+  box-shadow: 2px 2px 2px gray;
   max-width: 100%;
 `;
 
@@ -15,9 +17,10 @@ const Description = styled.p`
 `;
 
 export default ({ id, src, description, tags }) => (
-  <Photo>
+  <PhotoCard>
     <Image src={src} alt={description} />
     <Description>{description}</Description>
     <Description>Tags: {tags.join(", ")}</Description>
-  </Photo>
+    <Link to={`/view/${id}`}>View ></Link>
+  </PhotoCard>
 );
