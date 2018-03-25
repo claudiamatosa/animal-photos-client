@@ -24,7 +24,7 @@ const ADD_PHOTO = gql`
 
 export default () => (
   <Mutation mutation={ADD_PHOTO}>
-    {(addPhoto, { data }) => (
+    {(addPhoto, { data, loading }) => (
       <Fragment>
         {data && data.addPhoto ? (
           <Fragment>
@@ -41,14 +41,18 @@ export default () => (
             if (!photo) return;
 
             addPhoto({ variables: { data: { photo } } });
+            e.target.photo.value = "";
           }}
         >
           <p>
             You can only upload photos with animals! Don't try being sneaky.
           </p>
 
-          <input type="file" name="photo" />
-          <button type="submit">Upload!</button>
+          <input type="file" name="photo" disabled={loading} />
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Uploading..." : "Upload!"}
+          </button>
         </Form>
       </Fragment>
     )}
