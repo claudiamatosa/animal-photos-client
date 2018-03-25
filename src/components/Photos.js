@@ -5,9 +5,9 @@ import media from "../styles/media-queries";
 import PhotoCard from "./PhotoCard";
 
 const Photos = styled.ul`
-  display: flex;
   list-style: none;
   padding: 0;
+  display: flex;
   flex-wrap: wrap;
 `;
 
@@ -25,7 +25,7 @@ export default ({ photos }) =>
     <Photos>
       {photos.map(photo => (
         <Photo>
-          <PhotoCard {...photo} />
+          <PhotoCard {...photo} showDetails={false} />
         </Photo>
       ))}
     </Photos>
