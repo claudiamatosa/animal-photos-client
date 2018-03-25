@@ -82,7 +82,7 @@ export default () => {
     <Mutation mutation={ADD_PHOTO}>
       {(addPhoto, { data, loading, error }) => {
         if (error && !toast.isActive(notificationId)) {
-          notificationId = toast.error(newLinesToBreaks(errorDetails.message));
+          notificationId = toast.error(newLinesToBreaks(error.message));
           // notificationId = toast.error(<UploadError error={error} />);
         }
 
