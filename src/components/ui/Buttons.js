@@ -16,4 +16,8 @@ export const PrimaryButton = styled.button`
     cursor: pointer;
     background-color: ${colors.primary};
   }
+
+  &:disabled {
+    background-color: silver;
+  }
 `;
