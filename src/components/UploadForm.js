@@ -35,6 +35,25 @@ const ADD_PHOTO = gql`
   }
 `;
 
+const UploadError = ({ error: { graphQLErrors: [errorDetails] } }) => (
+  <Fragment>
+    <p>
+      We couldnʼt find an animal in this photo, so itʼs a no-go. Stop trying to
+      trick the system!
+    </p>
+
+    <small>
+      <p>
+        <strong>Found tags:</strong> {errorDetails.data.tags.join(", ")}
+      </p>
+      <p>
+        <strong>Found categories:</strong>{" "}
+        {errorDetails.data.categories.join(", ")}
+      </p>
+    </small>
+  </Fragment>
+);
+
 const onSubmit = addPhoto => event => {
   event.preventDefault();
   const photo = event.target.photo.files[0];
@@ -63,7 +82,8 @@ export default () => {
     <Mutation mutation={ADD_PHOTO}>
       {(addPhoto, { data, loading, error }) => {
         if (error && !toast.isActive(notificationId)) {
-          notificationId = toast.error(newLinesToBreaks(error.message));
+          // notificationId = toast.error(newLinesToBreaks(errorDetails.message));
+          notificationId = toast.error(<UploadError error={error} />);
         }
 
         return (
