@@ -38,7 +38,7 @@ export default () => (
       <Fragment>
         {data && data.addPhoto ? (
           <Fragment>
-            <H3>Here's your photo!</H3>
+            <H3>Hereʼs your photo!</H3>
             <PhotoCard {...data.addPhoto} />
 
             <UploadMore>
