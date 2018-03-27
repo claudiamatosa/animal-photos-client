@@ -22,12 +22,7 @@ export default () => (
       if (error) return null;
       if (loading) return "Loading...";
 
-      return (
-        <Fragment>
-          <H2>How cute!</H2>
-          <Photos photos={data.photos} />
-        </Fragment>
-      );
+      return <Photos photos={data.photos} />;
     }}
   </Query>
 );
