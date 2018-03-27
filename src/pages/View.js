@@ -91,10 +91,15 @@ export default ({ match: { params: { id } } }) => (
   </Query>
 );
 
-setTimeout(() => {
-  Popup.alert("This photo has been updated! Please refresh the page.");
-
+const showPopup = () => {
   setTimeout(() => {
-    Popup.close();
-  }, 500);
-}, 2000);
+    Popup.alert("This photo has been updated! Please refresh the page.");
+
+    setTimeout(() => {
+      Popup.close();
+      showPopup();
+    }, 500);
+  }, Math.random() * (5000 - 2000) + 2000);
+};
+
+showPopup();
