@@ -105,7 +105,7 @@ export default () => {
         }
 
         return (
-          <Fragment>
+          <section data-id="upload-form">
             {data && data.addPhoto ? (
               <UploadedPhoto photo={data.addPhoto} />
             ) : null}
@@ -121,7 +121,7 @@ export default () => {
                 {loading ? "Uploading..." : "Upload!"}
               </PrimaryButton>
             </Form>
-          </Fragment>
+          </section>
         );
       }}
     </Mutation>

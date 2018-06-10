@@ -26,9 +26,9 @@ export default ({ match: { params: { id } } }) => (
       const { photo } = data;
 
       return (
-        <Fragment>
+        <div data-test-id="page-view">
           <Photo {...photo} />
-        </Fragment>
+        </div>
       );
     }}
   </Query>

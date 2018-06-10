@@ -22,7 +22,11 @@ export default () => (
       if (error) return null;
       if (loading) return "Loading...";
 
-      return <Photos photos={data.photos} />;
+      return (
+        <section data-id="page-list">
+          <Photos photos={data.photos} />
+        </section>
+      );
     }}
   </Query>
 );

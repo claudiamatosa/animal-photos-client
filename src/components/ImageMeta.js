@@ -21,8 +21,8 @@ const Tags = styled.p`
 `;
 
 export default ({ description, tags }) => (
-  <Fragment>
+  <div data-id="image-meta">
     <Description>{description}</Description>
     <Tags>🏷 {tags.join(", ")}</Tags>
-  </Fragment>
+  </div>
 );

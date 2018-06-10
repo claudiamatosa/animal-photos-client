@@ -16,13 +16,13 @@ export default class ErrorBoundary extends React.Component {
   render() {
     if (this.state.error) {
       return (
-        <Fragment>
+        <section data-id="page-error">
           <H2>{"Oops, something went wrong"}</H2>
           <p>{this.state.error && this.state.error.toString()}</p>
 
           <H3>{"Stack"}</H3>
           <p>{newLinesToBreaks(this.state.info.componentStack)}</p>
-        </Fragment>
+        </section>
       );
     }
 

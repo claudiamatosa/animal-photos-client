@@ -22,7 +22,7 @@ const Photo = styled.li`
 
 export default ({ photos }) =>
   photos && (
-    <Photos>
+    <Photos data-id="photos">
       {photos.map(photo => (
         <Photo key={photo.id}>
           <PhotoCard {...photo} showDetails={false} />

@@ -58,9 +58,9 @@ const Navigation = styled.nav`
 const App = () => (
   <Router>
     <Fragment>
-      <Header>🐭🐶🐱🐌🙊🐣</Header>
+      <Header data-id="header">🐭🐶🐱🐌🙊🐣</Header>
 
-      <Navigation>
+      <Navigation data-id="navigation">
         <ul>
           <li>
             <Link to="/">List</Link>

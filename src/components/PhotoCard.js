@@ -50,7 +50,7 @@ const ViewMoreLink = styled(Link)`
 const viewMoreUrl = id => `/view/${id}`;
 
 export default ({ id, src, description, tags, showDetails = true }) => (
-  <PhotoCard>
+  <PhotoCard data-id="photo-card">
     <Link to={viewMoreUrl(id)}>
       <ImageContainer>
         <Image src={src} alt={description} />

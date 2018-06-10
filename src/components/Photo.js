@@ -13,7 +13,7 @@ const Image = styled.img`
 `;
 
 export default ({ id, src, description, tags }) => (
-  <Photo>
+  <Photo data-id="photo">
     <Image src={src} alt={description} />
     <ImageMeta description={description} tags={tags} />
   </Photo>
