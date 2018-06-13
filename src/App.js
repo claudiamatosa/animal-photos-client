@@ -79,7 +79,9 @@ const App = () => (
         </ErrorBoundary>
       </Main>
 
-      <ToastContainer autoClose={30000} style={{ width: "400px" }} />
+      <div data-id="notification">
+        <ToastContainer autoClose={30000} style={{ width: "400px" }} />
+      </div>
     </div>
   </Router>
 );
