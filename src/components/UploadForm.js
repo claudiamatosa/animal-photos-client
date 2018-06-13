@@ -71,6 +71,7 @@ const errors = {
 };
 
 const onSubmit = addPhoto => event => {
+  console.log(event.target.photo.files);
   event.preventDefault();
   const photo = event.target.photo.files[0];
 
@@ -81,14 +82,14 @@ const onSubmit = addPhoto => event => {
 };
 
 const UploadedPhoto = ({ photo }) => (
-  <Fragment>
+  <div data-id="uploaded-photo">
     <H3>Hereʼs your photo!</H3>
     <PhotoCard {...photo} />
 
     <UploadMore>
       <H3>Upload another:</H3>
     </UploadMore>
-  </Fragment>
+  </div>
 );
 
 export default () => {
@@ -115,9 +116,13 @@ export default () => {
                 You can only upload photos with animals! Donʼt try being sneaky.
               </p>
 
-              <FileUpload name="photo" disabled={loading} />
+              <FileUpload
+                data-id="file-upload"
+                name="photo"
+                disabled={loading}
+              />
 
-              <PrimaryButton type="submit" disabled={loading}>
+              <PrimaryButton data-id="submit" type="submit" disabled={loading}>
                 {loading ? "Uploading..." : "Upload!"}
               </PrimaryButton>
             </Form>

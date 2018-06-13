@@ -57,7 +57,7 @@ const Navigation = styled.nav`
 
 const App = () => (
   <Router>
-    <Fragment>
+    <div data-id="page">
       <Header data-id="header">🐭🐶🐱🐌🙊🐣</Header>
 
       <Navigation data-id="navigation">
@@ -80,7 +80,7 @@ const App = () => (
       </Main>
 
       <ToastContainer autoClose={30000} style={{ width: "400px" }} />
-    </Fragment>
+    </div>
   </Router>
 );
 
